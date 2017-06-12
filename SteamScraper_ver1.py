@@ -14,6 +14,7 @@ from datetime import datetime
 from bs4 import BeautifulSoup
 import requests
 import re
+from sys import stdout
 
 # Store URL Base to Scrape
 storeURL = "http://store.steampowered.com/search/?tags=21978&vrsupport=401"
@@ -194,26 +195,26 @@ for idx, url in enumerate(steamUrlList):
                 if ownersMean > 0 and playersMean >= 0:
                     playersPercentage = 100.0 * playersMean / ownersMean
                 else:
-                    playersPercentage = ''
+                    playersPercentage = ''.encode(stdout.encoding, errors='replace')
             
             fileCSV.write('{0},"{1}",{2},"{3}",{4}%,{5},"{6}","{7}","{8}","{9}","{10}",{11},{12} +/- {13},{14} +/- {15},{16}%\n'.format(
-                          appID,             # 0  - Steam Store App ID
-                          gameName,          # 1  - App Name
-                          gamePrice,         # 2  - App Price
-                          releaseDate,       # 3  - Date Released
-                          gameReview,        # 4  - Percentage of Positive Reviews
-                          gameReviewNum,     # 5  - Total Number of Reviews Recorded
-                          developerStr,      # 6  - Developer
-                          publisherStr,      # 7  - Publisher
-                          genreStr,          # 8  - Genre
-                          categoryStr,       # 9  - Category
-                          tagsStr,           # 10 - Game Tags
-                          peakUserYesterday, # 11 - Peak User Yesterday
-                          ownersMean,        # 12 - Estimated Number of Owners (mean)
-                          ownersSEM,         # 13 - Estimated Number of Owners (SEM)
-                          playersMean,       # 14 - Estimated Number of Players (mean)
-                          playersSEM,        # 15 - Estimated Number of Players (SEM)
-                          playersPercentage, # 16 - Estimated Percentage of Active Players
+                          appID.encode(stdout.encoding, errors='replace'),             # 0  - Steam Store App ID
+                          gameName.encode(stdout.encoding, errors='replace'),          # 1  - App Name
+                          gamePrice,                                                   # 2  - App Price
+                          releaseDate.encode(stdout.encoding, errors='replace'),       # 3  - Date Released
+                          gameReview,                                                  # 4  - Percentage of Positive Reviews
+                          gameReviewNum,                                               # 5  - Total Number of Reviews Recorded
+                          developerStr.encode(stdout.encoding, errors='replace'),      # 6  - Developer
+                          publisherStr.encode(stdout.encoding, errors='replace'),      # 7  - Publisher
+                          genreStr.encode(stdout.encoding, errors='replace'),          # 8  - Genre
+                          categoryStr.encode(stdout.encoding, errors='replace'),       # 9  - Category
+                          tagsStr.encode(stdout.encoding, errors='replace'),           # 10 - Game Tags
+                          peakUserYesterday,                                           # 11 - Peak User Yesterday
+                          ownersMean,                                                  # 12 - Estimated Number of Owners (mean)
+                          ownersSEM,                                                   # 13 - Estimated Number of Owners (SEM)
+                          playersMean,                                                 # 14 - Estimated Number of Players (mean)
+                          playersSEM,                                                  # 15 - Estimated Number of Players (SEM)
+                          playersPercentage,                                           # 16 - Estimated Percentage of Active Players
                           ))          
     
 fileCSV.close()
