@@ -197,7 +197,7 @@ for idx, url in enumerate(steamUrlList):
                 else:
                     playersPercentage = ''.encode(stdout.encoding, errors='replace')
             
-            fileCSV.write('{0},"{1}",{2},"{3}",{4}%,{5},"{6}","{7}","{8}","{9}","{10}",{11},{12} +/- {13},{14} +/- {15},{16}%\n'.format(
+            fileCSV.write('{0},"{1}",{2},"{3}",{4},{5},"{6}","{7}","{8}","{9}","{10}",{11},{12} +/- {13},{14} +/- {15},{16}\n'.format(
                           appID.encode(stdout.encoding, errors='replace'),             # 0  - Steam Store App ID
                           gameName.encode(stdout.encoding, errors='replace'),          # 1  - App Name
                           gamePrice,                                                   # 2  - App Price
